@@ -29,10 +29,12 @@ againBtn.addEventListener('click', () => {
 checkBtn.addEventListener('click', () => {
   let guessedValue = Number(guess.value);
 
+  // # wrong number entered
   if (guessedValue < 1 || guessedValue > 20) {
     message.textContent = ' 🚫 Wrong Input';
   }
 
+  // # correct answer
   else if (guessedValue === secretNum) {
     number.textContent = secretNum;
     message.textContent = '🎉 Correct Number';
@@ -40,13 +42,25 @@ checkBtn.addEventListener('click', () => {
     score.textContent = --count;
   }
     
+  // # guess is greater than the actual value
   else if (guessedValue > secretNum) {
-    message.textContent = 'Too High 📈';
-    score.textContent = --count;
+    if (count > 1) {
+      message.textContent = 'Too High 📈';
+      score.textContent = --count;
+    } else {
+      message.textContent = '😟 You Lose 😟';
+      body.style.backgroundColor = '#fa4343';
+    }
   }
-    
+
+  // # guess is smaller than the actual value
   else if (guessedValue < secretNum) {
-    message.textContent = 'Too Low 📉';
-    score.textContent = --count;
+    if (count > 1) {
+      message.textContent = 'Too Low 📉';
+      score.textContent = --count;
+    } else {
+      message.textContent = '😟 You Lose 😟';
+      body.style.backgroundColor = '#fa4343';
+    }
   }
 });
