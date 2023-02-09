@@ -13,6 +13,7 @@ const body = document.body;
 
 let secretNum = Math.floor(Math.random() * 20) + 1;
 let count = 20;
+let highScoreCount = 0;
 
 // # Again Button reset
 againBtn.addEventListener('click', () => {
@@ -22,6 +23,7 @@ againBtn.addEventListener('click', () => {
   number.textContent = '?';
   guess.value = '';
   score.textContent = 20;
+  count = 20;
 });
 
 // # main events
@@ -39,7 +41,10 @@ checkBtn.addEventListener('click', () => {
     number.textContent = secretNum;
     message.textContent = '🎉 Correct Number';
     body.style.backgroundColor = '#60b347';
-    score.textContent = --count;
+    if (count > highScoreCount) {
+      highScoreCount = count;
+      highScore.textContent = highScoreCount;
+    }
   }
     
   // # guess is greater than the actual value
