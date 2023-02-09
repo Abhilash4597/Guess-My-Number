@@ -21,9 +21,10 @@ againBtn.addEventListener('click', () => {
   message.textContent = 'Start guessing...';
   number.textContent = '?';
   guess.value = '';
+  score.textContent = 20;
 });
 
-// # main event
+// # main events
 
 checkBtn.addEventListener('click', () => {
   let guessedValue = Number(guess.value);
@@ -40,12 +41,12 @@ checkBtn.addEventListener('click', () => {
   }
     
   else if (guessedValue > secretNum) {
-    message.textContent = 'Too High';
+    message.textContent = 'Too High 📈';
     score.textContent = --count;
   }
     
   else if (guessedValue < secretNum) {
-    message.textContent = 'Too Low';
+    message.textContent = 'Too Low 📉';
     score.textContent = --count;
   }
 });
