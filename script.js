@@ -35,7 +35,6 @@ checkBtn.addEventListener('click', () => {
   if (guessedValue < 1 || guessedValue > 20) {
     message.textContent = ' 🚫 Wrong Input';
   }
-
   // # correct answer
   else if (guessedValue === secretNum) {
     number.textContent = secretNum;
@@ -45,12 +44,10 @@ checkBtn.addEventListener('click', () => {
       highScoreCount = count;
       highScore.textContent = highScoreCount;
     }
-  }
-    
-  // # guess is greater than the actual value
-  else if (guessedValue > secretNum) {
+  } else if (guessedValue !== secretNum) {
     if (count > 1) {
-      message.textContent = 'Too High 📈';
+      message.textContent =
+        guessedValue > secretNum ? 'Too High 📈' : 'Too Low 📉';
       score.textContent = --count;
     } else {
       message.textContent = '😟 You Lose 😟';
@@ -58,14 +55,25 @@ checkBtn.addEventListener('click', () => {
     }
   }
 
-  // # guess is smaller than the actual value
-  else if (guessedValue < secretNum) {
-    if (count > 1) {
-      message.textContent = 'Too Low 📉';
-      score.textContent = --count;
-    } else {
-      message.textContent = '😟 You Lose 😟';
-      body.style.backgroundColor = '#fa4343';
-    }
-  }
+  // // # guess is greater than the actual value
+  // else if (guessedValue > secretNum) {
+  //   if (count > 1) {
+  //     message.textContent = 'Too High 📈';
+  //     score.textContent = --count;
+  //   } else {
+  //     message.textContent = '😟 You Lose 😟';
+  //     body.style.backgroundColor = '#fa4343';
+  //   }
+  // }
+
+  // // # guess is smaller than the actual value
+  // else if (guessedValue < secretNum) {
+  //   if (count > 1) {
+  //     message.textContent = 'Too Low 📉';
+  //     score.textContent = --count;
+  //   } else {
+  //     message.textContent = '😟 You Lose 😟';
+  //     body.style.backgroundColor = '#fa4343';
+  //   }
+  // }
 });
